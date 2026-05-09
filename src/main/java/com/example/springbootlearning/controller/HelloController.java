@@ -32,11 +32,6 @@ public class HelloController {
         response.put("message", "Hello, Spring Boot! 🎉");
         response.put("welcomeMessage", welcomeMessage);
         response.put("author", authorName);
-
-        // ⚠️ BUG: 这里会抛出 NullPointerException
-        String nullString = null;
-        int length = nullString.length();  // 错误！空指针异常
-
         response.put("tips", "恭喜你成功运行了第一个 Spring Boot 应用！");
         return response;
     }
