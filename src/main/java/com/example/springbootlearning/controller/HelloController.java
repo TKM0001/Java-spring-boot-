@@ -67,4 +67,25 @@ public class HelloController {
 
         return info;
     }
+
+    /**
+     * 健康检查接口 - 新增功能
+     * 访问地址: GET http://localhost:8080/api/health
+     */
+    @GetMapping("/health")
+    public Map<String, Object> healthCheck() {
+        Map<String, Object> health = new HashMap<>();
+        health.put("status", "UP");
+        health.put("application", "Spring Boot Learning");
+        health.put("timestamp", System.currentTimeMillis());
+        
+        Map<String, String> systemInfo = new HashMap<>();
+        systemInfo.put("Java Version", System.getProperty("java.version"));
+        systemInfo.put("OS Name", System.getProperty("os.name"));
+        systemInfo.put("OS Version", System.getProperty("os.version"));
+        systemInfo.put("User Name", System.getProperty("user.name"));
+        health.put("systemInfo", systemInfo);
+        
+        return health;
+    }
 }
